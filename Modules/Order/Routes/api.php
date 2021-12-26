@@ -16,12 +16,10 @@ use Modules\Order\Http\Controllers\ApiOrders\OrderController;
 */
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('order/add', [OrderController::class, 'store']);
 
+    Route::get('order', [GoodsController::class, 'index']);
+    Route::get('order/show/{id}', [GoodsController::class, 'show']);
 });
-
-Route::post('order/add', [OrderController::class, 'store']);
-
-Route::get('order', [GoodsController::class, 'index']);
-Route::get('order/show/{id}', [GoodsController::class, 'show']);
 
 //Route::post('good/add', [GoodsController::class, 'store']);

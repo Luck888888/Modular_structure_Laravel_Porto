@@ -46,6 +46,7 @@ class OrderController extends Controller
      *   tags={"Add_Order"},
      *   summary="Adding an order",
      *   operationId="Adding an order",
+     *   security={{ "Bearer":{} }},
      *
      *  @OA\Parameter(
      *      name="order_number",

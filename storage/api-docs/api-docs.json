@@ -120,10 +120,9 @@
         "/api/order": {
             "get": {
                 "tags": [
-                    "Auth"
+                    "Order"
                 ],
                 "summary": "Orders",
-                "operationId": "orders",
                 "responses": {
                     "201": {
                         "description": "Success",
@@ -149,13 +148,18 @@
                     "500": {
                         "description": "General server error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/api/order/show/{id}": {
             "get": {
                 "tags": [
-                    "Auth"
+                    "Order"
                 ],
                 "summary": "Viewing an order by ID",
                 "description": "Enter the order ID",
@@ -196,7 +200,12 @@
                     "500": {
                         "description": "General server error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/api/order/add": {
@@ -257,7 +266,22 @@
                     "500": {
                         "description": "General server error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "Bearer"
             }
         }
     },
@@ -267,24 +291,14 @@
             "description": "Registration or authorization of users"
         },
         {
-            "name": "Auth",
-            "description": "Registration or authorization of users"
+            "name": "Order",
+            "description": "Get an order by ID, a list of orders"
         },
         {
             "name": "Add_Order",
             "description": "Adding an order"
         }
     ],
-    "components": {
-        "securitySchemes": {
-            "api_key_security_example": {
-                "type": "apiKey",
-                "description": "A short description for security scheme",
-                "name": "api_key",
-                "in": "header"
-            }
-        }
-    },
     "security": [
         []
     ]
