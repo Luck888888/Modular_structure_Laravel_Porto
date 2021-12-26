@@ -15,7 +15,14 @@ use Modules\Auth\Http\Requests\ApiAuth\Registration\CreateRegistrationRequest;
  *      version="3.0",
  *      title="CRM system module",
  *      description="Authorization, user registration.Adding an order to the system,viewing the list of orders,viewing an individual order."
- * )
+ * ),
+ *   @OA\SecurityScheme(
+ *       scheme="Bearer",
+ *       securityScheme="Bearer",
+ *       type="http",
+ *       in="header",
+ *       name="Authorization",
+ * ),
  */
 
 /**

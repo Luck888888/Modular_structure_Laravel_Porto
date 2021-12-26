@@ -2,17 +2,18 @@
 
 namespace Modules\Order\Http\Controllers\ApiGoods;
 
-use Auth;
+
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Order\Entities\Order;
+use Modules\Order\Entities\OrderItem;
 use Modules\Order\Http\Requests\ApiGood\GoodRequest;
 
 /**
- * Registration or authorization of users
- * @package Modules\Auth\Http\Controllers\Api\V1
- * @OA\Tag(name="Auth")
+ * Get an order by ID, a list of orders
+ * @package Modules\Order\Http\Controllers\ApiGoods
+ * @OA\Tag(name="Order")
  */
 class GoodsController extends Controller
 {
@@ -26,9 +27,9 @@ class GoodsController extends Controller
     /**
      * @OA\Get(
      * path="/api/order",
-     *   tags={"Auth"},
+     *   tags={"Order"},
      *   summary="Orders",
-     *   operationId="orders",
+     *   security={{ "Bearer":{} }},
      *
      *   @OA\Response(
      *      response=201,
@@ -71,20 +72,20 @@ class GoodsController extends Controller
 
     public function index()
     {
-          try {
-              $orders = Order::with('goods')->whereHas('goods',)
-                  ->get();
-              if ($orders) {
-                  return response()->json(['orders' => $orders], 200);
+        try {
+            $orders = Order::with('goods')->whereHas('goods',)
+                ->get();
+            if ($orders) {
+                return response()->json(['orders' => $orders], 200);
 
-              } else {
-                  throw new \Exception('Entry for not found');
-              }
-          } catch (\Exception $e) {
-              return response()->json([
-                  'error' => 'Entry for not found',
-              ], 404);
-          }
+            } else {
+                throw new \Exception('Entry for not found');
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Entry for not found',
+            ], 404);
+        }
     }
 
     /**
@@ -123,7 +124,8 @@ class GoodsController extends Controller
      * summary="Viewing an order by ID",
      * description="Enter the order ID",
      * operationId="Orders",
-     * tags={"Auth"},
+     * tags={"Order"},
+     * security={{ "Bearer":{} }},
      *
      *
      * @OA\Parameter(
