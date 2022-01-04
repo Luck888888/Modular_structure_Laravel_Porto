@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-use Modules\Order\Http\Controllers\ApiGoods\GoodsController;
-use Modules\Order\Http\Controllers\ApiOrders\OrderController;
+use Modules\Order\Http\Controllers\Api\V1\GoodsController;
+use Modules\Order\Http\Controllers\Api\V1\OrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,10 @@ use Modules\Order\Http\Controllers\ApiOrders\OrderController;
 */
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::post('order/add', [OrderController::class, 'store']);
+    Route::post('v1/order/add', [OrderController::class, 'store']);
+    Route::post('v1/good/add', [GoodsController::class, 'store']);
 
-    Route::get('order', [GoodsController::class, 'index']);
-    Route::get('order/show/{id}', [GoodsController::class, 'show']);
+    Route::get('v1/order', [GoodsController::class, 'index']);
+    Route::get('v1/order/show/{id}', [GoodsController::class, 'show']);
 });
 
-//Route::post('good/add', [GoodsController::class, 'store']);
