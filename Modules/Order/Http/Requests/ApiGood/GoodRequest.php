@@ -14,8 +14,10 @@ class GoodRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'     => 'required',
-            'quantity' => 'required',
+            'name'         => 'required',
+            'quantity'     => 'required',
+            'order_id'     => 'required',
+            'total_amount' => 'required',
         ];
     }
 

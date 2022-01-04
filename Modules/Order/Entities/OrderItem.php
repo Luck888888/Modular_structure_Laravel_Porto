@@ -22,6 +22,10 @@ class OrderItem extends Model
         return $this->belongsTo(Order::class);
     }
 
+//    public function getTotalAmountAttribute(){
+//        return $this->attributes['total_amount']* $this->attributes['quantity'];
+//    }
+
     protected static function newFactory()
     {
         return \Modules\Order\Database\factories\OrderItemFactory::new();

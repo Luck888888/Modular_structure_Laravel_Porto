@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Order\Http\Controllers\ApiOrders;
+namespace Modules\Order\Http\Controllers\Api\V1;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -42,7 +42,7 @@ class OrderController extends Controller
 
     /**
      * @OA\Post(
-     * path="/api/order/add",
+     * path="/api/v1/order/add",
      *   tags={"Add_Order"},
      *   summary="Adding an order",
      *   operationId="Adding an order",

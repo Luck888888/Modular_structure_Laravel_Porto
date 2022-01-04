@@ -17,7 +17,12 @@ class Order extends Model
 
     public function goods()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class, 'order_id','id');
+    }
+
+    public function getAmountAttribute(){
+        return $this->goods()->where('order_id', $this->id)
+            ->sum('total_amount');
     }
 
     protected static function newFactory()
