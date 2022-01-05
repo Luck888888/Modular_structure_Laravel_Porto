@@ -17,11 +17,11 @@ use Modules\Auth\Http\Controllers\Api\V1\AuthController;
 */
 
 //auth routes
-Route::post('v1/register', [AuthController::class, 'register']);
-Route::post('v1/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
-    Route::post('v1/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
 
